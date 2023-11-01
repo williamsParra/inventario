@@ -20,4 +20,7 @@ it('feature tour', async () => {
 
     fireEvent.click(counterButton);
     screen.getByText('count is 1');
+
+    fireEvent.click(counterButton);
+    screen.getByText('count is 2');
 });

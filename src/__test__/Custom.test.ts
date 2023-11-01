@@ -1,7 +1,18 @@
-// App.test.tsx/jsx
-import { it, expect } from 'vitest';
+import { renderHook, act } from '@testing-library/react-hooks'
+import { useCounter } from '../hooks/useCounter'
 
-it('test ts files', () => {
-    expect(true).toBe(true);
+test('should increment the count', () => {
+    const { result } = renderHook(() => useCounter())
+    act(() => {
+        result.current.increment()
+    })
+    expect(result.current.count).toBe(1)
+})
 
-});
+test('should decrement the count', () => {
+    const { result } = renderHook(() => useCounter())
+    act(() => {
+        result.current.decrement()
+    })
+    expect(result.current.count).toBe(-1)
+})
